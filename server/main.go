@@ -35,15 +35,16 @@ func main() {
 
 func handleConnection(c net.Conn) {
 	fmt.Println("Handling connection")
-	buffer := make([]byte, 1024)
+	buffer := make([]byte, 5)
+	for {
+		n, err := c.Read(buffer)
 
-	message, err := c.Read(buffer)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+
+		c.Write([]byte(string(buffer[:n])))
+
 	}
-
-	c.Write([]byte("FROM SERVER: " + string(buffer[:message])))
-	//close the connection
-	c.Close()
 }
