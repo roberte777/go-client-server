@@ -9,8 +9,8 @@ import (
 //make a tcp server that listens on port 8080
 func main() {
 	const (
-		PORT = "3000"
-		HOST = "127.0.0.1"
+		PORT = "80"
+		HOST = "172.16.0.6"
 		TYPE = "tcp"
 	)
 	//listen on port 8080
