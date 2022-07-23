@@ -10,7 +10,7 @@ import (
 func main() {
 	const (
 		PORT = "3000"
-		HOST = "localhost"
+		HOST = "0.0.0.0"
 		TYPE = "tcp"
 	)
 	//listen on port 8080

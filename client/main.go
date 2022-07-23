@@ -11,7 +11,7 @@ import (
 
 //make a client that connects to tcp server
 func main() {
-	const CONNECTION = "localhost:3000"
+	const CONNECTION = "go-server:3000"
 	//connect to server
 	c, err := net.Dial("tcp", CONNECTION)
 	if err != nil {
