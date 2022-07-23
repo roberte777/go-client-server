@@ -9,7 +9,7 @@ import (
 
 //make a client that connects to tcp server
 func main() {
-	const CONNECTION = "172.16.0.6:80"
+	const CONNECTION = "go-server:80"
 	//connect to server
 	c, err := net.Dial("tcp", CONNECTION)
 	if err != nil {
@@ -29,7 +29,7 @@ func main() {
 }
 func read_data(c net.Conn) {
 	//make a buffer to read data into
-	buf := make([]byte, 5)
+	buf := make([]byte, 1024)
 	for {
 		//read data from server
 		n, err := c.Read(buf)

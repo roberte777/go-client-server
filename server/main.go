@@ -9,8 +9,10 @@ import (
 //make a tcp server that listens on port 8080
 func main() {
 	const (
+        //port to listen on
 		PORT = "80"
-		HOST = "172.16.0.6"
+        // accept connections if they match this host
+		HOST = "0.0.0.0"
 		TYPE = "tcp"
 	)
 	//listen on port 8080
@@ -35,7 +37,7 @@ func main() {
 
 func handleConnection(c net.Conn) {
 	fmt.Println("Handling connection")
-	buffer := make([]byte, 5)
+	buffer := make([]byte, 1024)
 	for {
 		n, err := c.Read(buffer)
 
