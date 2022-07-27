@@ -1,15 +1,17 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
 	"net"
+	"os"
 	"time"
 )
 
 //make a client that connects to tcp server
 func main() {
-	const CONNECTION = "go-server:80"
+	const CONNECTION = "localhost:80"
 	//connect to server
 	c, err := net.Dial("tcp", CONNECTION)
 	if err != nil {
@@ -48,7 +50,10 @@ func write_data(c net.Conn) {
 	for {
 		//get user input
 		var input string
-		fmt.Scanln(&input)
+		reader := bufio.NewScanner(os.Stdin)
+		if reader.Scan() {
+			input = reader.Text()
+		}
 
 		//send user input to server
 		c.Write([]byte(input))
